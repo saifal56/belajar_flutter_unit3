@@ -1,6 +1,6 @@
-import 'dart:ui';
-
+import 'package:belajar_flutter_unit3/second.page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -9,54 +9,62 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 2, 9, 32),
       appBar: AppBar(
-        title: const Text("Belajar Flutter Unit 3"),
-        centerTitle: false,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
+        title: const Text("Belajar flutter"),
+        centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Flexible(
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.5,
-              width: MediaQuery.of(context).size.width,
-              color: const Color(0xFFF7C8E0),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              color: Colors.grey,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Halo gess",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return SecondPage();
+                          },
+                        ));
+                      },
+                      child: Text("Ke Halaman Second Page"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              color: Color.fromARGB(255, 28, 5, 80),
               child: const Center(
                 child: Text(
-                  "Hello World",
+                  "Belajar flutter",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.red,
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            height: 50,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text("Tekan"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                elevation: 10,
-                shadowColor: Colors.amber,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 15,
-                ),
-              ),
-            ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
